@@ -11,17 +11,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup .NET SDK (11 preview)
+      - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '11.0.x'
-          dotnet-quality: 'preview'
+          dotnet-version: '10'
 
-      - name: Add dotnet11 daily feed
+      - name: Add dotnet10 daily feed
         run: |
-          dotnet nuget add source \
-            https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet11/nuget/v3/index.json \
-            -n dotnet11
+          dotnet nuget add source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet10/nuget/v3/index.json -n dotnet10
 
       - name: Install Android NDK r27c
         run: |
@@ -42,6 +39,7 @@ jobs:
             -c Release \
             -r linux-bionic-arm64 \
             -p:NativeLib=Shared \
+            -p:DisableUnsupportedError=true \
             --no-restore
 
       - name: List output
@@ -52,4 +50,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Lagrange.Core.NativeAPI-linux-bionic-arm64
-          path: Lagrange.Core.NativeAPI/bin/Release/net11.0/linux-bionic-arm64/publish/*.so
+          path: Lagrange.Core.NativeAPI/bin/Release/net10.0/linux-bionic-arm64/publish/*.so
