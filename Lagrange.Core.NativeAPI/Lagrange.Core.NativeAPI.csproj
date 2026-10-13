@@ -5,6 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PublishAot>true</PublishAot>
+        <PublishAotUsingRuntimePack>true</PublishAotUsingRuntimePack>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,10 +14,6 @@
 
     <ItemGroup>
       <TrimmerRootAssembly Include="Lagrange.Core" Preserve="All"/>
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-bionic-arm64'">
-      <PackageReference Include="Microsoft.NETCore.App.Runtime.NativeAOT.linux-bionic-arm64" Version="10.0.0" />
     </ItemGroup>
 
 </Project>
