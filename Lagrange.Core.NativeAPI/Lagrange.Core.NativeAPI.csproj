@@ -15,9 +15,8 @@
       <TrimmerRootAssembly Include="Lagrange.Core" Preserve="All"/>
     </ItemGroup>
 
-    <!-- 新增：交叉编译到 linux-bionic-arm64 所需的 ILCompiler 包 -->
     <ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-bionic-arm64'">
-      <PackageReference Include="runtime.linux-bionic-arm64.Microsoft.DotNet.ILCompiler" Version="10.0.0" />
+      <PackageReference Include="Microsoft.NETCore.App.Runtime.NativeAOT.linux-bionic-arm64" Version="10.0.0" />
     </ItemGroup>
 
 </Project>
